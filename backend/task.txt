@@ -1,0 +1,66 @@
+PTBOX Challenge for Senior Software Developer: OSINT Web Application
+Introduction
+Our challenge evaluates your proficiency in critical areas relevant to our current product needs, including Kotlin development, React development, API construction, and Docker deployment. You will create a web application that leverages open-source intelligence tools (OSINT) to scan and gather information about specified domains.
+Objective
+Develop an OSINT web application that allows users to scan specified domains using either "theHarvester" or "Amass" open-source tools. These scans aim to collect information about a domain, such as IP addresses, subdomains, email addresses, associated LinkedIn accounts, and more.
+The application should:
+● Receive a domain (such as google.com) as input in the GUI. Research what fields are required from each tool (if any) and add them to the GUI as you see fit.
+● Run theHarvester or Amass (at your choice)
+● Display in the GUI a card for each scan, including the following mandatory fields: domain, start time and end time
+Core Requirements
+1.
+Server-side Logic
+o
+Implement a Kotlin-based server capable of handling web requests. Implement the following 2 endpoints:
+1.
+Initiate a new scan: receiving a request that includes a domain name, initiate a Docker container to run that tool on the specified domain.
+2.
+Get scans: get a list of the past scans
+o
+Ensure the server can efficiently manage the tool's execution and collect the output for further processing.
+o
+Persist the data in a way of your choice so that historical scan data will be available after a server restart.
+o
+Important note: if unable or unwilling to implement the required endpoints, hardcoded responses (returning mock results without launching docker containers for example) are accepted as long as the extra functionalities for the UI will be implemented.
+2.
+Client-side Interface
+o
+Develop a React-based client application where users can input a domain name and initiate the scan via a "Scan" button.
+o
+Incorporate a UI element (e.g., a button) to open a modal form for initiating scans. Upon successful scan initiation, display a card on the main page containing the scan details (start time, end time, domain and any other information that you find useful).
+o
+If the scan yields results, provide an option within the card to view the discovered subdomains and additional information through a modal. If no results are found, indicate this status appropriately.
+o
+Extra functionalities (not required by default, only if you have missing backend components):
+1.
+Let the user reorder the cards in the grid / list by dragging them around. This order should be persisted after page refresh.
+2.
+Provide a way to access a scan’s details directly by a URL. A user will want to access the results of scan with id 123 by pasting a URL in the browser. Integrate this page in the main navigation graph of the application.
+3.
+General UX – add transitions. animations, validations, tooltips, decorative elements, … wherever you see fit.
+3.
+Deployment and Documentation
+o
+The server and client components must be containerized with Docker, ensuring ease of deployment and scalability.
+o
+Provide comprehensive documentation in a README file detailing steps for building, running, and utilizing the application.
+4.
+User Experience
+o
+Design the web application to be responsive, accommodating various screen sizes and ensuring that the display of scan cards adapts gracefully.
+Submissions
+o
+A Word file with the following questions and your answers
+o
+What tests should be implemented in the programming of such a project? What tests would you include in your project if given more time?
+o
+How can you measure the performance of your project? Can you optimize your code to run faster?
+o
+What bottlenecks can be caused by the OSINT tools given to this project?
+o
+A link for the docker image pulls, including the required credentials to download the project.
+Our team will evaluate your submission based on code quality, functionality, user interface design, and adherence to the challenge requirements.
+Good luck!
+
+
+docker pull simonthomas/theharvester
